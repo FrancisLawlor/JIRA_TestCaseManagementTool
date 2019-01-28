@@ -1,4 +1,4 @@
-package com.checklist.controller;
+package com.checklist.assembler;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 

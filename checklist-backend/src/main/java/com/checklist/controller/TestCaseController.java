@@ -1,5 +1,6 @@
 package com.checklist.controller;
 
+import com.checklist.assembler.TestCaseResourceAssembler;
 import com.checklist.exception.ResourceNotFoundException;
 import com.checklist.model.TestCase;
 import com.checklist.repository.TestCaseRepository;
@@ -40,7 +41,7 @@ public class TestCaseController {
     }
 
     @GetMapping(path = "/testcases/{id}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
-    Resource<TestCase> one(@PathVariable Long id) {
+    public Resource<TestCase> one(@PathVariable Long id) {
 
         TestCase testCase = testcaseRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Testcases not found with id " + id));
