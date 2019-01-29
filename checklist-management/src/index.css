@@ -6,9 +6,71 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #F5F7FA;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.navbar {
+  background-color: #ffffff;
+}
+
+.navbar-header {
+  text-align: left;
+}
+
+p {
+  color: #507BFC;
+}
+
+.rocket-img {
+  vertical-align: middle;
+  margin-bottom: 0.75em;
+}
+
+.text1 {
+  padding-left: 15px;
+  font-size: 28px;
+  color: black;
+}
+
+.Title {
+  padding-left: 64px;
+  padding-top: 44px;
+  padding-right: 64px;
+}
+
+.breadCrums{
+  background-color: #F5F7FA;
+  border: 0;
+}
+
+.all-projects{
+  padding-left:50px;
+  padding-right:50px;
+  color: white;
+  padding-top: 5px;
+  text-align: center;
+}
+
+.my-projects{
+  padding-left:25px;
+  padding-right:25px;
+  padding-top: 5px;
+  color: #94969A;
+  text-align: center;
+}
+
+.not-active {
+  background-color: black ;
+}
+
+.btn-active {
+  background: #507BFC ;
+}
+
+
+
