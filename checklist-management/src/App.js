@@ -3,6 +3,27 @@ import './App.css';
 import ProjectList from './controller/ProjectController';
 import EpicList from './controller/EpicController';
 
+import Projects from './Projects'
+import Epics from './Epics'
+
+class Landing extends Component {
+  render() {
+    return (<>
+      <h1> Landing </h1>
+      <button onClick={this.props.openProjects}>  login </button>
+    </>)
+  }
+}
+
+class TestPopup extends Component {
+  render() {
+    return (<>
+      <h1> TestPopup </h1>
+      <button onClick={this.props.closePopup}> go back </button>
+    </>)
+  }
+}
+
 class App extends Component {
   constructor(props) {
     super(props)
