@@ -54,6 +54,7 @@ p {
   color: white;
   padding-top: 5px;
   text-align: center;
+  
 }
 
 .my-projects{
@@ -66,10 +67,12 @@ p {
 
 .not-active {
   background-color: black ;
+  border-radius: 25px;
 }
 
 .btn-active {
   background: #507BFC ;
+  border-radius: 25px;
 }
 
 .grid-container {
@@ -82,14 +85,19 @@ p {
 }
 
 .cardView {
-  padding-left: 64px;
+  padding-left: 32px;
   padding-top: 44px;
   padding-right: 64px;
+  
 }
 
 .card {
   margin-left: 32px;
-  margin-right: 32px;
   width:304px;
   height:360px;
+  border-radius: 20px;
+}
+
+.view-btn{
+  
 }

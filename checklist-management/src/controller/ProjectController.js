@@ -15,15 +15,11 @@ class ProjectCard extends Component {
         // callback = this.props.callback(project.id)
         return (
             <div className="grid-item" bsStyle="sm">
-            
-           
-       
              <Thumbnail src="/assets/thumbnaildiv.png" alt="242x200" className="card">
                  <h3>Thumbnail label</h3>
                  <p>Description</p>
                  <p>
-                 <Button bsStyle="primary">Button</Button>&nbsp;
-                 <Button bsStyle="default">Button</Button>
+                 <Button bsStyle="default" className="view-btn">View</Button>
                  </p>
              </Thumbnail>
             </div>
