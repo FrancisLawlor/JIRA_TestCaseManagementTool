@@ -22,9 +22,9 @@ public class TestCase {
     private int status;
     private String epicId;
 
-    TestCase() {}
+    public TestCase() {}
 
-    TestCase(Long id, String  name, String description, String comment, int status, String epicId) {
+    public TestCase(Long id, String name, String description, String comment, int status, String epicId) {
         this.id = id;
         this.name = name;
         this.description = description;
