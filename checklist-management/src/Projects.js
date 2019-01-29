@@ -15,6 +15,8 @@ import { Row } from "react-bootstrap";
 import my_image from './user.png';
 import rocket from './rocket.png';
 
+import ProjectList from './controller/ProjectController'
+
 
 export default class Projects extends Component {
 	constructor(props, context) {
@@ -110,6 +112,9 @@ export default class Projects extends Component {
 				  </Nav>
 				</Navbar>
 			</div>
+      <div className="cardView">
+        <ProjectList />
+      </div>
 		</div>
     );
   }

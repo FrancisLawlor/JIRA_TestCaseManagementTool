@@ -39,6 +39,7 @@ class App extends Component {
     this.setState({ page : "epics", project: projectId })
   }
   render() {
+      return <Projects />
       // if (this.state.popup){
       //     return <TestPopup epic={this.state.epic} closePopup={this.closePopup} />
       // } else
