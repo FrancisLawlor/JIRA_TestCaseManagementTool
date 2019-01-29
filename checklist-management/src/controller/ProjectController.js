@@ -12,8 +12,6 @@ class ProjectCard extends Component {
     }
 
     render() {
-        // callback = this.props.callback(project.id)
-
         let project = this.props.project
         let category
         if (project.hasOwnProperty("projectCategory")) {
@@ -29,7 +27,7 @@ class ProjectCard extends Component {
                  <h3>{project.name}</h3>
                  { category }
                  <p>
-                 <Button bsStyle="default" className="view-btn">View</Button>
+                 <Button bsStyle="default" className="view-btn" onClick={() => this.props.callback(project.id)}>View</Button>
                  </p>
              </Thumbnail>
             </div>

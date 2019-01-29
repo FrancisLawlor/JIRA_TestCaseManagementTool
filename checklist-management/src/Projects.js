@@ -16,7 +16,7 @@ import my_image from './user.png';
 import rocket from './rocket.png';
 
 import ProjectList from './controller/ProjectController'
-
+import EpicList from './controller/EpicController'
 
 export default class Projects extends Component {
 	constructor(props, context) {
@@ -97,7 +97,7 @@ export default class Projects extends Component {
 			<Nav bsStyle="pills"  onSelect={this.handleSelect}>
 	  			<NavItem eventKey={1} >
 				  <img src={rocket}  className="rocket-img"/> 
-				  <span className="text1">Projects</span>
+				  <span className="text1">Projects</span>  {/*TODO: change this to epics when page changes*/}
 	  			</NavItem>
 			</Nav>
 			<Nav pullRight className="radioButton">
@@ -113,7 +113,8 @@ export default class Projects extends Component {
 				</Navbar>
 			</div>
       <div className="cardView">
-        <ProjectList />
+        {/*<ProjectList />*/}
+        <EpicList project={"10014"}/>
       </div>
 		</div>
     );
