@@ -100,4 +100,49 @@ p {
 
 .view-btn{
   
+  background: #507BFC;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 35px;
+  padding-left: 35px;
+  border-radius: 25px;
+  color: #ffffff
+}
+
+.view-text {
+  padding-left: 15px;
+   font-size: 20px;
+}
+
+.view-img{
+  padding-top: 5px;
+  vertical-align: middle;
+  margin-bottom: 0.75em;
+}
+
+.heart-placeholder {
+  float: right;
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
+.avatar-placeholder {
+  padding-top: 64px;
+  vertical-align: middle;
+}
+
+.avatar {
+  
+  height: 120px;
+  width: 120px;
+  object-fit: scale-down;
+}
+
+.project-name {
+  font-size: 30px;
+  color: black;
+}
+
+p .catagory {
+  color: #98A0A6;
 }

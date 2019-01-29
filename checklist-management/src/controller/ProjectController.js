@@ -4,6 +4,9 @@ import { Row } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import { Thumbnail } from "react-bootstrap";
 import { Button } from "react-bootstrap";
+import rocket from '.././rocket.png';
+import view from '.././view.png';
+import heartoff from '.././heart-off.png';
 
 
 class ProjectCard extends Component {
@@ -23,14 +26,17 @@ class ProjectCard extends Component {
         }
 
         return (
-            <div className="grid-item" bsStyle="sm">
-       
-             <Thumbnail src={project.avatarUrls["48x48"]} alt="242x200" className="card">
-                 <h3>{project.name}</h3>
-                 { category }
-                 <p>
-                 <Button bsStyle="default" className="view-btn">View</Button>
-                 </p>
+            <div className="grid-item" >
+                
+             <Thumbnail className="card">
+                 <div className="heart-placeholder"><img src={heartoff}/></div>
+                 <div className="avatar-placeholder"><img src={project.avatarUrls["48x48"]} className="avatar"/></div>
+                 
+                 <p className="project-name">{project.name}</p>
+                 <p className="catagory">{ category }</p>
+                 
+                 <Button bsStyle="default" className="view-btn"><img src={view} className="view-img"/><span className="view-text">View</span></Button>
+                 
              </Thumbnail>
             </div>
             
@@ -54,9 +60,77 @@ class ProjectList extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:8080/projects')
-            .then(response => response.json())
-            .then(data => this.setState({data}));
+        // fetch('http://localhost:8080/projects')
+        //     .then(response => response.json())
+        //     .then(data => this.setState({data}));
+
+        this.setState({
+            data : [
+                {name : "Hello",
+                avatarUrls : {
+                    "48x48" : rocket
+                },
+                projectCategory : {
+                    name : "Content"
+                }}, 
+
+                {name : "Hello",
+                avatarUrls : {
+                    "48x48" : rocket
+                },
+                projectCategory : {
+                    name : "Content"
+                }},
+                
+                {name : "Hello",
+                avatarUrls : {
+                    "48x48" : rocket
+                },
+                projectCategory : {
+                    name : "Content"
+                }},
+
+                {name : "Hello",
+                avatarUrls : {
+                    "48x48" : rocket
+                },
+                projectCategory : {
+                    name : "Content"
+                }},
+
+                {name : "Hello",
+                avatarUrls : {
+                    "48x48" : rocket
+                },
+                projectCategory : {
+                    name : "Content"
+                }},
+
+                {name : "Hello",
+                avatarUrls : {
+                    "48x48" : rocket
+                },
+                projectCategory : {
+                    name : "Content"
+                }},
+
+                {name : "Hello",
+                avatarUrls : {
+                    "48x48" : rocket
+                },
+                projectCategory : {
+                    name : "Content"
+                }},
+
+                {name : "Hello",
+                avatarUrls : {
+                    "48x48" : rocket
+                },
+                projectCategory : {
+                    name : "Content"
+                }},
+            ]
+        })
     }
 }
 
