@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import './App.css';
+import ProjectList from './controller/ProjectController';
+import EpicList from './controller/EpicController';
 
 import Projects from './Projects'
 import Epics from './Epics'
@@ -27,51 +28,28 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      page : "landing",
-
-      project : null,
-      epic : null,
-      popup : false,
+        page: "projects",
+        project: null,
+        epic: null,
+        popup: null
     }
-
-    this.openProjects = this.openProjects.bind(this)
-    this.openProject = this.openProject.bind(this)
-    this.openPopup = this.openPopup.bind(this)
-    this.closePopup = this.closePopup.bind(this)
-    this.closeEpic = this.closeEpic.bind(this)
-
+    this.changePage = this.changePage.bind(this)
   }
-
-  openProjects() {
-    this.setState({ page : "projects" })
+  changePage(projectId) {
+    this.setState({ page : "epics", project: projectId })
   }
-
-  openProject(proj) {
-    this.setState({ page : "epics", project : proj })
-  }
-
-  openPopup(epic) {
-    this.setState({ popup : true, epic : epic})
-  }
-
-  closePopup() {
-    this.setState({ popup : false, epic : null })
-  }
-
-  closeEpic() {
-    this.setState({ page : "projects", project : null })
-  }
-
   render() {
-    if (this.state.popup){
-      return <TestPopup epic={this.state.epic} closePopup={this.closePopup} />
-    } else if (this.state.page === "epics") {
-      return <Epics project={this.state.project} openPopup={this.openPopup} closeEpic={this.closeEpic} />
-    } else if (this.state.page === "projects") {
-      return <Projects openProject={this.openProject} />
-    } else { // page === "landing"
-      return <Landing openProjects={this.openProjects} />
-    }
+      // if (this.state.popup){
+      //     return <TestPopup epic={this.state.epic} closePopup={this.closePopup} />
+      // } else
+      if (this.state.page === "epics") {
+          return <EpicList project={this.state.project}/>
+      } else if (this.state.page === "projects") {
+          return <ProjectList callback={this.changePage}/>
+      }
+      // } else { // page === "landing"
+      //     return <Landing openProjects={this.openProjects} />
+      // }
   }
 }
 

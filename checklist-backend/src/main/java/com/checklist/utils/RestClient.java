@@ -14,7 +14,7 @@ public class RestClient {
         HttpHeaders requestHeaders = new HttpHeaders();
         requestHeaders.setContentType(MediaType.APPLICATION_JSON);
 //        TODO read token from config file
-        requestHeaders.add("Authorization", "Basic <auth token>");
+        requestHeaders.add("Authorization", "Basic c2NoaXRyYW5zaGlAZ3VpZGV3aXJlLmNvbTo2Q2c3Y3NvM01IcEJzdk56TDNiVkNCMzM=");
         return requestHeaders;
     }
 
