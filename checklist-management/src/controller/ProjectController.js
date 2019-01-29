@@ -13,11 +13,21 @@ class ProjectCard extends Component {
 
     render() {
         // callback = this.props.callback(project.id)
+
+        let project = this.props.project
+        let category
+        if (project.hasOwnProperty("projectCategory")) {
+            category = <p>{project.projectCategory.name}</p>
+        } else {
+            category = <p><i>Unassigned</i></p>
+        }
+
         return (
             <div className="grid-item" bsStyle="sm">
-             <Thumbnail src="/assets/thumbnaildiv.png" alt="242x200" className="card">
-                 <h3>Thumbnail label</h3>
-                 <p>Description</p>
+       
+             <Thumbnail src={project.avatarUrls["48x48"]} alt="242x200" className="card">
+                 <h3>{project.name}</h3>
+                 { category }
                  <p>
                  <Button bsStyle="default" className="view-btn">View</Button>
                  </p>
@@ -44,13 +54,9 @@ class ProjectList extends Component {
     }
 
     componentDidMount() {
-        // fetch('http://localhost:8080/projects')
-        //     .then(response => response.json())
-        //     .then(data => this.setState({data}));
-
-        this.setState({
-            data : [1,2,3, 4, 5, 6]
-        })
+        fetch('http://localhost:8080/projects')
+            .then(response => response.json())
+            .then(data => this.setState({data}));
     }
 }
 
