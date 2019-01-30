@@ -17,6 +17,7 @@ import rocket from './rocket.png';
 import ProjectList from './controller/ProjectController'
 import EpicList from './controller/EpicController'
 import TestCaseList from './controller/TestCaseController'
+import Table1 from './controller/TestCaseController'
 
 import Projects from './Projects'
 import Epics from './Epics'
@@ -156,7 +157,7 @@ class App extends Component {
 
       return (<NavBarComp page={this.state.page}>{ (() => {
         if (this.state.page === "Tasks"){
-          return <TestCaseList parent={this}/>
+          return <TestCaseList parent={this} />
         } else if (this.state.page === "Epics") {
           return <EpicList project={this.state.project} parent={this}/>
         } else if (this.state.page === "Projects") {
