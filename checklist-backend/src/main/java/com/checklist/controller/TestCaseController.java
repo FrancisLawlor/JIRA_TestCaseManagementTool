@@ -37,6 +37,7 @@ public class TestCaseController {
         this.log = Logger.getLogger(TestCaseController.class.getName());
     }
 
+    @CrossOrigin
     @GetMapping(path = "/testcases", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public Resources<Resource<TestCase>> all() {
         List<Resource<TestCase>> testcases = testcaseRepository.findAll().stream()
@@ -48,6 +49,7 @@ public class TestCaseController {
 
     }
 
+    @CrossOrigin
     @GetMapping(path = "/testcases/{id}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public Resource<TestCase> one(@PathVariable Long id) {
 
@@ -57,11 +59,13 @@ public class TestCaseController {
         return assembler.toResource(testCase);
     }
 
+    @CrossOrigin
     @PostMapping("/testcases")
     public TestCase createTestCase(@Valid @RequestBody TestCase testcase) {
             return testcaseRepository.save(testcase);
     }
 
+    @CrossOrigin
     @PutMapping("/testcases/{id}")
     public TestCase updateTestCase(@PathVariable Long id, @Valid @RequestBody TestCase testcaseRequest) {
 
@@ -77,6 +81,7 @@ public class TestCaseController {
             }).orElseThrow(() -> new ResourceNotFoundException("Test case not found with id " + id));
     }
 
+    @CrossOrigin
     @DeleteMapping("/testcases/{id}")
     public ResponseEntity<?> deleteTestcase(@PathVariable Long id) {
         return testcaseRepository.findById(id)
@@ -87,6 +92,7 @@ public class TestCaseController {
                 }).orElseThrow(() -> new ResourceNotFoundException("Test case not found with id " + id));
     }
 
+    @CrossOrigin
     @GetMapping(path = "/testcases/epic/{epicId}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public Resources<TestCase> allEpics(@PathVariable String epicId) {
         String sql = "SELECT * FROM testcase WHERE epic_id = '" + epicId + "'";
