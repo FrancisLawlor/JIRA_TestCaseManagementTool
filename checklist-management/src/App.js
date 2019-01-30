@@ -141,6 +141,7 @@ class App extends Component {
         page: "Projects",
         project: null,
         epic: null,
+        epicKey: null,
         popup: null
     }
   }
@@ -149,15 +150,16 @@ class App extends Component {
     this.setState({ page: "Epics", project: projectId })
   }
 
-  openEpic(epicId) {
-    this.setState({ page: "Tasks", epic: epicId})
+  openEpic(epicId, epicKey) {
+    console.log(epicId)
+    this.setState({ page: "Tasks", epic: epicId, epicKey: epicKey})
   }
 
   render() {
 
       return (<NavBarComp page={this.state.page}>{ (() => {
         if (this.state.page === "Tasks"){
-          return <TestCaseList parent={this} />
+          return <TestCaseList epic={this.state.epic} parent={this}/>
         } else if (this.state.page === "Epics") {
           return <EpicList project={this.state.project} parent={this}/>
         } else if (this.state.page === "Projects") {

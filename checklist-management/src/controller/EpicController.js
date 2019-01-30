@@ -35,7 +35,7 @@ class EpicCard extends Component {
 
                  {/* <p className="catagory">{ this.props.epic.key }</p> */}
                  
-		 <Button bsStyle="default" className="view-btn" onClick={() => this.props.parent.openEpic(this.props.epic.id)} ><img src={view} className="view-img"/><span className="view-text">View</span></Button>
+		 <Button bsStyle="default" className="view-btn" onClick={() => this.props.parent.openEpic(this.props.epic.id, this.props.epic.key)} ><img src={view} className="view-img"/><span className="view-text">View</span></Button>
                  
              </Thumbnail>
             </div>
