@@ -31,10 +31,10 @@ class ProjectCard extends Component {
                  <div className="heart-placeholder"><img src={heartoff}/></div>
                  <div className="avatar-placeholder"><img src={project.avatarUrls["48x48"]} className="avatar"/></div>
                  
-                 <p className="project-name">{project.name}</p>
+                 <div className="project-name-div"><p className="project-name">{project.name}</p></div>
                  <p className="catagory">{ category }</p>
                  
-                 <Button bsStyle="default" className="view-btn"><img src={view} className="view-img"/><span className="view-text">View</span></Button>
+                 <Button bsStyle="default" className="view-btn" onClick={() => this.props.parent.openProject(project.id)}><img src={view} className="view-img"/><span className="view-text">View</span></Button>
                  
              </Thumbnail>
             </div>
@@ -52,7 +52,7 @@ class ProjectList extends Component {
     render() {
         return <div className="grid-container">{
             this.state.data.map((project) => {
-                return <ProjectCard key={project.id} project={project} callback={this.props.callback} />
+                return <ProjectCard key={project.id} project={project} parent={this.props.parent} />
                 // return <li key={project.id} onClick={() => this.props.callback(project.id)}><img src={project.avatarUrls["48x48"]}/>{project.name}</li>
             })
         }</div>
@@ -62,74 +62,6 @@ class ProjectList extends Component {
         fetch('http://localhost:8080/projects')
             .then(response => response.json())
             .then(data => this.setState({data}));
-
-        // this.setState({
-        //     data : [
-        //         {name : "Hello",
-        //         avatarUrls : {
-        //             "48x48" : rocket
-        //         },
-        //         projectCategory : {
-        //             name : "Content"
-        //         }},
-        //
-        //         {name : "Hello",
-        //         avatarUrls : {
-        //             "48x48" : rocket
-        //         },
-        //         projectCategory : {
-        //             name : "Content"
-        //         }},
-        //
-        //         {name : "Hello",
-        //         avatarUrls : {
-        //             "48x48" : rocket
-        //         },
-        //         projectCategory : {
-        //             name : "Content"
-        //         }},
-        //
-        //         {name : "Hello",
-        //         avatarUrls : {
-        //             "48x48" : rocket
-        //         },
-        //         projectCategory : {
-        //             name : "Content"
-        //         }},
-        //
-        //         {name : "Hello",
-        //         avatarUrls : {
-        //             "48x48" : rocket
-        //         },
-        //         projectCategory : {
-        //             name : "Content"
-        //         }},
-        //
-        //         {name : "Hello",
-        //         avatarUrls : {
-        //             "48x48" : rocket
-        //         },
-        //         projectCategory : {
-        //             name : "Content"
-        //         }},
-        //
-        //         {name : "Hello",
-        //         avatarUrls : {
-        //             "48x48" : rocket
-        //         },
-        //         projectCategory : {
-        //             name : "Content"
-        //         }},
-        //
-        //         {name : "Hello",
-        //         avatarUrls : {
-        //             "48x48" : rocket
-        //         },
-        //         projectCategory : {
-        //             name : "Content"
-        //         }},
-        //     ]
-        // })
     }
 }
 
