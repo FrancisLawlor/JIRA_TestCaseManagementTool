@@ -1,19 +1,42 @@
 import React, {Component} from "react";
-import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
+import {BootstrapTable, TableHeaderColumn, ExportCSVButton, InsertModalFooter} from 'react-bootstrap-table';
 
-var products = [{
-    id: 1,
-    name: "Item name 1",
-    price: 100
-},{
-    id: 2,
-    name: "Item name 2",
-    price: 100
-}];
-// It's a data format example.
 function priceFormatter(cell, row){
 return '<i class="glyphicon glyphicon-usd"></i> ' + cell;
 }
+
+var selectRowProp = {
+   mode: "checkbox",
+   clickToSelect: true,
+   bgColor: "rgb(238, 193, 213)"
+ };
+
+ const cellEditProp = {
+   mode: 'click'
+ };
+
+
+function onAfterInsertRow(row) {
+    console.log(row)
+
+    let status = parseInt("1")
+    fetch('http://localhost:8080/testcases', {
+       method: 'post',
+       headers: {'Content-Type':'application/json'},
+       body: JSON.stringify({
+            "name": row.name,
+            "description": row.description,
+            "comment": row.comment,
+            "status": 1,
+            "epicId": 25575
+        })
+    });
+
+    // return row
+}
+
+
+
 
 class TestCaseList extends Component {
     constructor(props) {
@@ -23,12 +46,74 @@ class TestCaseList extends Component {
 
     }
 
+    handleExportToJiraClick = (onClick) => {
+         console.log("here")
+        onClick()
+    }
+    createCustomJiraButton = (onClick) => {
+        return (
+            <ExportCSVButton
+                btnText = "Export to Jira"
+                onClick = {() => this.handleExportToJiraClick(onClick)} />
+            );
+     }
+
+     handleSave(save){
+        // const { columns, onSave } = this.props;
+        // const newRow = {};
+        // columns.forEach((column, i) => {
+        //     newRow[column.field] = this.refs[column.field].value;
+        // }, this);
+        // console.log(newRow)
+        // You should call onSave function and give the new row
+        // onSave(newRow)
+
+        // var name = document.getElementById('name').value
+        // var desc = document.getElementById('desc').value
+        // // var status = document.getElementById('status').value
+        // var comment = document.getElementById('comment').value
+        // console.log(inputs)
+
+
+
+        save()
+     }
+
+createCustomModalFooter = (closeModal, save) => {
+ // return (
+   // <InsertModalFooter
+   //   className='my-custom-class'
+   //   saveBtnText='CustomSaveText'
+   //   closeBtnText='CustomCloseText'
+   //   closeBtnContextual='btn-warning'
+   //   saveBtnContextual='btn-success'
+   //   closeBtnClass='my-close-btn-class'
+   //   saveBtnClass='my-save-btn-class'
+   //   beforeClose={ this.beforeClose }
+   //   beforeSave={ this.beforeSave }
+   //   onModalClose={ () => this.handleModalClose(closeModal) }
+   //   onSave={ () => this.handleSave(save) }/>
+ // );
+
+ // If you want have more power to custom the child of InsertModalFooter,
+ // you can do it like following
+ return (
+   <InsertModalFooter
+     onSave={ () => this.handleSave(save) }>
+     {/*{ ... }*/}
+   </InsertModalFooter>
+ );
+}
+//...
+
+
+
     submit() {
         fetch('http://localhost:8080/comments/GLOB-110', {
            method: 'post',
            headers: {'Content-Type':'application/json'},
            body:
-            "{'body':'http://localhost:3000/testcases/epic/25575'}"
+            "{'body':'http://localhost:8080/testcases/epic/25575'}"
         });
     }
 
@@ -45,14 +130,61 @@ class TestCaseList extends Component {
         // } */}
         // </ul>
 
+     const options = {
+        // exportCSVButton : this.createCustomJiraButton
+ insertModalFooter: this.createCustomModalFooter,
+ afterInsertRow: onAfterInsertRow
+
+     };
+
+
+        var data
+
+        if (this.state.data === null) {
+            data = []
+        } else {
+            data = this.state.data.map((task) => {
+                return {
+                    name : task.name,
+                    description : task.description,
+                    comment: task.comment,
+                    status: (task.status == 1) ? "passing" : "failing"
+                }
+            })
+        }
+
+        console.log(data)
+
         return (
-            <BootstrapTable data={products} striped={true} hover={true}>
-                <TableHeaderColumn dataField="name" isKey={true} dataAlign="center" dataSort={true}>Name</TableHeaderColumn>
-                <TableHeaderColumn dataField="description" dataSort={true}>Description</TableHeaderColumn>
-                <TableHeaderColumn dataField="Status" dataFormat={priceFormatter}>Status</TableHeaderColumn>
-                <TableHeaderColumn dataField="Comment" dataFormat={priceFormatter}>Comment</TableHeaderColumn>
-            </BootstrapTable>
-	        // document.getElementById("app")
+            <div className="table-div">
+               <BootstrapTable
+               data={data}
+               options={options}
+               selectRow={selectRowProp}
+               cellEdit={ cellEditProp }
+               insertRow deleteRow exportCSV
+               striped
+               hover
+               condensed
+               pagination
+               insertRow
+               deleteRow
+               search
+               >
+                   <TableHeaderColumn dataField="name" isKey={true} dataAlign="center" dataSort={true}>Name</TableHeaderColumn>
+                   <TableHeaderColumn dataField="description" dataSort={true}>Description</TableHeaderColumn>
+                   <TableHeaderColumn dataField="status" dataSort={true}>Status</TableHeaderColumn>
+                   <TableHeaderColumn dataField="comment" dataSort={true} >Comment</TableHeaderColumn>
+               </BootstrapTable>
+               {/*<div>
+                <input id='name'/>
+                <input id='desc'/>
+                <input id='status'/>
+                <input id='comment'/>
+               </div>*/}
+           <button onClick={this.submit}> Send to Jira </button>
+           </div>
+
         )
     }
 
@@ -70,17 +202,22 @@ class TestCaseList extends Component {
 //             })
 //         }
 //         </ul>
-//         <button onClick={this.submit}> submit </button>
+
 //         </div>
 //     }
 // 
     componentDidMount() {
+        console.log(this.props.epic)
         fetch('http://localhost:8080/testcases/epic/' + this.props.epic)
+            .then(response => response.json())
             .then(response => {
-                if (!this.hasOwnProperty("_embedded")){
+
+                console.log(response)
+                if (!("_embedded" in response)){
                     return []
                 } else {
-                    return response.json()._embedded.testCaseList
+    return response._embedded.testCaseList
+                
                 }
             })
             .then(data => this.setState({data}));
