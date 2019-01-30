@@ -25,7 +25,6 @@ class EpicCard extends Component {
 
     render(){
         return (
-
             <div className="grid-item" >
                 
              <Thumbnail className="card">
@@ -36,7 +35,7 @@ class EpicCard extends Component {
 
                  {/* <p className="catagory">{ this.props.epic.key }</p> */}
                  
-                 <Button bsStyle="default" className="view-btn"><img src={view} className="view-img"/><span className="view-text">View</span></Button>
+		 <Button bsStyle="default" className="view-btn" onClick={() => this.props.parent.openEpic(this.props.epic.id)} ><img src={view} className="view-img"/><span className="view-text">View</span></Button>
                  
              </Thumbnail>
             </div>
@@ -68,7 +67,7 @@ class EpicList extends Component {
 
         return <div className="grid-container">{
             this.state.data.issues.map((epic) => {
-                return <EpicCard key={epic.id} epic={epic} callback={this.props.callback} />
+                return <EpicCard key={epic.id} epic={epic} parent={this.props.parent} />
                 // return <li key={project.id} onClick={() => this.props.callback(project.id)}><img src={project.avatarUrls["48x48"]}/>{project.name}</li>
             })
         }</div>
