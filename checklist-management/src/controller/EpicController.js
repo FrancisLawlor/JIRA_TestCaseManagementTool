@@ -28,7 +28,7 @@ class EpicCard extends Component {
                  <h3> {this.props.epic.fields.summary} </h3>
                  <p> {this.props.epic.key} </p>
                  <p>
-                 <Button bsStyle="default" className="view-btn">View</Button>
+                 <Button bsStyle="default" className="view-btn" onClick={() => this.props.parent.openEpic(this.props.epic.id)}>View</Button>
                  </p>
              </Thumbnail>
             </div>   
@@ -50,7 +50,7 @@ class EpicList extends Component {
 
         return <div className="grid-container">{
             this.state.data.issues.map((epic) => {
-                return <EpicCard key={epic.id} epic={epic} callback={this.props.callback} />
+                return <EpicCard key={epic.id} epic={epic} parent={this.props.parent} />
                 // return <li key={project.id} onClick={() => this.props.callback(project.id)}><img src={project.avatarUrls["48x48"]}/>{project.name}</li>
             })
         }</div>
