@@ -13,3 +13,15 @@ All projects from jira: ```/projects``` (GET)
 
 All epics from jira for project given project id: ```/epics/<id>``` (GET)
 
+Sample test case object:
+
+```
+{
+	"name": "testcase 2",
+	"description": "this is test case 2",
+	"comment": "this is a comment pertaining to test case 2",
+	"status": 1,
+	"epicId": 14157
+}
+```
+

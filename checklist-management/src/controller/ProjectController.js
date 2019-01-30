@@ -59,77 +59,77 @@ class ProjectList extends Component {
     }
 
     componentDidMount() {
-        // fetch('http://localhost:8080/projects')
-        //     .then(response => response.json())
-        //     .then(data => this.setState({data}));
+        fetch('http://localhost:8080/projects')
+            .then(response => response.json())
+            .then(data => this.setState({data}));
 
-        this.setState({
-            data : [
-                {name : "Hello",
-                avatarUrls : {
-                    "48x48" : rocket
-                },
-                projectCategory : {
-                    name : "Content"
-                }}, 
-
-                {name : "Hello",
-                avatarUrls : {
-                    "48x48" : rocket
-                },
-                projectCategory : {
-                    name : "Content"
-                }},
-                
-                {name : "Hello",
-                avatarUrls : {
-                    "48x48" : rocket
-                },
-                projectCategory : {
-                    name : "Content"
-                }},
-
-                {name : "Hello",
-                avatarUrls : {
-                    "48x48" : rocket
-                },
-                projectCategory : {
-                    name : "Content"
-                }},
-
-                {name : "Hello",
-                avatarUrls : {
-                    "48x48" : rocket
-                },
-                projectCategory : {
-                    name : "Content"
-                }},
-
-                {name : "Hello",
-                avatarUrls : {
-                    "48x48" : rocket
-                },
-                projectCategory : {
-                    name : "Content"
-                }},
-
-                {name : "Hello",
-                avatarUrls : {
-                    "48x48" : rocket
-                },
-                projectCategory : {
-                    name : "Content"
-                }},
-
-                {name : "Hello",
-                avatarUrls : {
-                    "48x48" : rocket
-                },
-                projectCategory : {
-                    name : "Content"
-                }},
-            ]
-        })
+        // this.setState({
+        //     data : [
+        //         {name : "Hello",
+        //         avatarUrls : {
+        //             "48x48" : rocket
+        //         },
+        //         projectCategory : {
+        //             name : "Content"
+        //         }},
+        //
+        //         {name : "Hello",
+        //         avatarUrls : {
+        //             "48x48" : rocket
+        //         },
+        //         projectCategory : {
+        //             name : "Content"
+        //         }},
+        //
+        //         {name : "Hello",
+        //         avatarUrls : {
+        //             "48x48" : rocket
+        //         },
+        //         projectCategory : {
+        //             name : "Content"
+        //         }},
+        //
+        //         {name : "Hello",
+        //         avatarUrls : {
+        //             "48x48" : rocket
+        //         },
+        //         projectCategory : {
+        //             name : "Content"
+        //         }},
+        //
+        //         {name : "Hello",
+        //         avatarUrls : {
+        //             "48x48" : rocket
+        //         },
+        //         projectCategory : {
+        //             name : "Content"
+        //         }},
+        //
+        //         {name : "Hello",
+        //         avatarUrls : {
+        //             "48x48" : rocket
+        //         },
+        //         projectCategory : {
+        //             name : "Content"
+        //         }},
+        //
+        //         {name : "Hello",
+        //         avatarUrls : {
+        //             "48x48" : rocket
+        //         },
+        //         projectCategory : {
+        //             name : "Content"
+        //         }},
+        //
+        //         {name : "Hello",
+        //         avatarUrls : {
+        //             "48x48" : rocket
+        //         },
+        //         projectCategory : {
+        //             name : "Content"
+        //         }},
+        //     ]
+        // })
     }
 }
 
