@@ -113,7 +113,7 @@ export default class Projects extends Component {
 				</Navbar>
 			</div>
       <div className="cardView">
-        {/*<ProjectList />*/}
+        {/* <ProjectList /> */}
         <EpicList project={"10014"}/>
       </div>
 		</div>
