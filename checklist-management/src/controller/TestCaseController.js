@@ -25,4 +25,4 @@ class TestCaseList extends Component {
     }
 }
 
-export default TestCaseList;
+export default EpicList;
