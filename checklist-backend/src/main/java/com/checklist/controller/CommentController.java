@@ -15,6 +15,7 @@ public class CommentController {
     RestTemplate restTemplate = new RestTemplate();
 
 
+    @CrossOrigin
     @PostMapping (path = "/comments/{id}")
     public void createComment(@PathVariable String id, @Valid @RequestBody String comment) {
         HttpHeaders requestHeaders = new HttpHeaders();
