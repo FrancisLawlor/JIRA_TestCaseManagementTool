@@ -12,7 +12,7 @@ public class EpicController {
     @CrossOrigin
     @GetMapping(path = "/epics/{id}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public String all(@PathVariable Long id) {
-        String url = "https://guidewirejira.atlassian.net/rest/api/2/search?jql=project=" + id + " and issuetype=Epic";
+        String url = "https://yourcompany.atlassian.net/rest/api/2/search?jql=project=" + id + " and issuetype=Epic";
         ResponseEntity<String> response = RestClient.request(url);
 
         return response.getBody();
