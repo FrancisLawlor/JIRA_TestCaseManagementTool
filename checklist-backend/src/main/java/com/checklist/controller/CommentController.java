@@ -12,7 +12,7 @@ import javax.validation.Valid;
 @RestController
 public class CommentController {
 
-    RestTemplate restTemplate = new RestTemplate();
+    private RestTemplate restTemplate = new RestTemplate();
 
 
     @CrossOrigin
@@ -24,7 +24,7 @@ public class CommentController {
 //        TODO read token from config file
         requestHeaders.add("Authorization", "Basic <Auth Token>");
         Comment commentBody = new Comment(commentJustBody);
-        String url = "https://guidewirejira.atlassian.net/rest/api/2/issue/" + id + "/comment";
+        String url = "https://yourcompany.atlassian.net/rest/api/2/issue/" + id + "/comment";
         HttpEntity<Comment> requestEntity = new HttpEntity<>(commentBody, requestHeaders);
         restTemplate.exchange(url, HttpMethod.POST, requestEntity, Comment.class);
     }
