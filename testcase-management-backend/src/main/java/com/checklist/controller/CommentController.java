@@ -24,7 +24,7 @@ public class CommentController {
 //        TODO read token from config file
         requestHeaders.add("Authorization", "Basic <Auth Token>");
         Comment commentBody = new Comment(commentJustBody);
-        String url = "https://yourcompany.atlassian.net/rest/api/2/issue/" + id + "/comment";
+        String url = "https://guidewirejira.atlassian.net/rest/api/2/issue/" + id + "/comment";
         HttpEntity<Comment> requestEntity = new HttpEntity<>(commentBody, requestHeaders);
         restTemplate.exchange(url, HttpMethod.POST, requestEntity, Comment.class);
     }

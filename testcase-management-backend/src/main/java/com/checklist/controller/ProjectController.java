@@ -11,7 +11,7 @@ public class ProjectController {
     @CrossOrigin
     @GetMapping(path = "/projects", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
     public String all() {
-        String url = "https://yourcompany.atlassian.net/rest/api/2/project";
+        String url = "https://guidewirejira.atlassian.net/rest/api/2/project";
         ResponseEntity<String> response = RestClient.request(url);
 
         return response.getBody();
